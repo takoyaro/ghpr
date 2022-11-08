@@ -1,5 +1,5 @@
 {
-	"name":"ghpr",
+	"name":"prmd",
 	"description": "Github PR/Review list to Markdown",
 	"main": "./dist/index.js",
 	"scripts": {
@@ -13,7 +13,7 @@
 		"prompts": "^2.4.2"
 	},
 	"bin":{
-		"ghpr":"./dist/index.js"
+		"prmd":"./dist/index.js"
 	},
 	"version": "0.1.0"
 }

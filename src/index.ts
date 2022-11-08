@@ -6,7 +6,7 @@ prompt.start();
 
 const process = spawn(CREATED_PULL_REQUESTS[0],[CREATED_PULL_REQUESTS[1]]);
 process.stdout.on('data',(data:string)=>{
-    console.log(data)
+    console.log(data);
 })
 
 

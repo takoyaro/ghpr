@@ -14,5 +14,6 @@
 	},
 	"bin":{
 		"ghpr":"./dist/index.js"
-	}
+	},
+	"version": "0.1.0"
 }

@@ -1,4 +1,7 @@
 {
+	"name":"ghpr",
+	"description": "Github PR/Review list to Markdown",
+	"main": "./dist/index.js",
 	"scripts": {
 		"build":"tsc",
 		"prepublish": "tsc"

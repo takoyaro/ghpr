@@ -1,10 +1,11 @@
 {
 	"name":"prmd",
 	"description": "Github PR/Review list to Markdown",
-	"main": "./dist/index.js",
+	"main": "dist/index.js",
 	"scripts": {
 		"build":"tsc",
-		"prepublish": "tsc"
+		"prepublish": "tsc",
+		"prepack": "tsc"
 	},
 	"dependencies": {
 		"@types/node": "^18.11.9",
@@ -15,5 +16,5 @@
 	"bin":{
 		"prmd":"./dist/index.js"
 	},
-	"version": "0.1.0"
+	"version": "0.1.4"
 }

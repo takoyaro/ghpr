@@ -15,25 +15,34 @@ const reviewPRs = getPullRequests(REQUESTED_REVIEW);
 
 
 (async () => {
-  const selectedCreated = await prompts([
-    {
-      type: 'multiselect',
-      name: 'PR',
-      message: 'Your PRs',
-      choices: getRecents(createdPRs).map((d:PullRequest) => ({title: d.title, value: d})),
-    }
-  ]);
-
-  const selectedReviews = await prompts([
-    {
-      type: 'multiselect',
-      name: 'PR',
-      message: 'waiting for your Review',
-      choices: getRecents(reviewPRs).map((d:PullRequest) => ({title: d.title, value: d})),
-    }
-  ]);
+  const selectedPRs = [];
   
-  const selectedPRs = [...selectedCreated.PR, ...selectedReviews.PR ];
+  const createdOptions = getRecents(createdPRs).map((d:PullRequest) => ({title: d.title, value: d}));
+  if (createdOptions && createdOptions.length > 0) {
+    const selectedCreated = await prompts([
+      {
+        type: 'multiselect',
+        name: 'PR',
+        message: 'Your PRs',
+        choices: getRecents(createdPRs).map((d:PullRequest) => ({title: d.title, value: d})),
+      }
+    ]);
+    selectedPRs.push(...selectedCreated.PR);
+  }
+  
+  const reviewsOptions = getRecents(reviewPRs).map((d:PullRequest) => ({title: d.title, value: d}));
+  if (reviewsOptions && reviewsOptions.length > 0) {
+    const selectedReviews = await prompts([
+      {
+        type: 'multiselect',
+        name: 'PR',
+        message: 'waiting for your Review',
+        choices: reviewsOptions
+      }
+    ]);
+    selectedPRs.push(...selectedReviews.PR)
+  }
+  
   const marked = (selectedPRs as PullRequest[]).map(d => toMarked(d))
   console.log(marked.join(`\r\n`));
 })();
